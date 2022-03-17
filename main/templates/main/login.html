@@ -1,0 +1,33 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Логин
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="container fd-column center">
+        <h1 style="margin-bottom:20px;margin-top: 20px;">Авторизация</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p>
+              <label for="id_email">Электронды пошта:</label>
+              <input type="email" name="email" maxlength="60" required="" id="id_email">
+            </p>
+            <p>
+              <label for="id_password">Пароль:</label>
+              <input type="password" name="password" required="" id="id_password">
+            </p>
+            <button class="btn mt-2 " type="submit" style="width:100%;">Кіру</button>
+          </form>
+          {% if error_log %}
+      
+                    <div class="alert alert-danger">
+                        <strong>{{ error_log }}</strong>
+                    </div>
+
+        {% endif %}
+    </div>
+
+{% endblock%}

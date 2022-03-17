@@ -1,0 +1,65 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Тіркелу
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="container fd-column center">
+
+        <h1>Тіркелу</h1>
+        <br>
+        <form action="" method="POST" >
+          {% csrf_token %}
+            <p>
+              <label for="id_email">Электронды пошта:</label>
+              <input type="email" name="email" maxlength="60" autofocus="" required="" id="id_email">
+            </p>
+            <p>
+              <br>
+              <label for="id_role">Студент:</label>
+              <input type="radio" name="role" required="" id="id_role" value="student" style="margin-right: 20px;">
+              <label for="id_role">Оқытушы:</label>
+              <input type="radio" name="role" required="" id="id_role2" value="teacher">
+            </p>
+            <br>
+
+            <p>
+              <label for="id_name">Аты-жөн:</label>
+              <input type="text" name="name" maxlength="60" required="" id="id_name">
+            </p>
+            <p>
+              <label for="id_surname">Фамилия:</label>
+              <input type="text" name="surname" maxlength="60" required="" id="id_surname">
+            </p>
+            <p>
+              <label for="id_password1">Пароль:</label>
+              <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+              <span class="helptext"></span>
+
+            <p>
+              <label for="id_password2">Пароль қайталау:</label>
+              <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+            </p>
+            <button type="submit" style="margin-top:15px;width:100%">Тіркелу</button>
+          </form>
+          <div class="errors">
+            {% if register_form.errors %}
+            <div class="alert alert-danger">
+
+            {% for field in register_form %}
+
+              {% for error in field.errors %} 
+                      <strong>{{ error|escape }}</strong><br>
+                {% endfor %}
+              {% endfor %}
+              </div>
+          {% endif %}
+    </div>
+  
+    </div>
+  
+
+{% endblock%}

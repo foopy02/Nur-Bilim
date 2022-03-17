@@ -1,0 +1,123 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+Нұр-Білім | Бастапқы бет
+{% endblock %}
+{% block content %}
+    <div class="container fd-column">
+        <div class="greeting block">
+            {% if request.user.is_authenticated %}
+            {% if request.user.role == "student" %}
+            <p class="last_news">Ашық курстар: </p>
+
+            <ol >
+            {% for course in available_courses %}
+                <li class="block">
+                    <form action="{% url 'add to course' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{course.id}}">
+                        <input type="hidden" name="email" value="{{request.user}}">
+                        <div class="course ">
+                            <p class="fw-700">Курстың аты: </p>
+                            {{course.name}}
+                        </div>
+                        <div class="course">
+                            <p class="fw-700">Оқытушы: </p>
+                            {{course.creater_name}}
+                            {{course.creater_surname}}
+                        </div>
+                        <div class="course">
+                            <p class="fw-700">Поштасы: </p>
+                            {{course.creater_email}}
+                        </div>
+                        <button type="submit">Қурсқа жазылу</button>
+                    </form>
+                </li>
+            {%endfor%}
+        </ol>
+
+        </div>
+        {% endif %}
+        {% endif %}
+        <div class="greeting block">
+
+            <p class="last_news">Соңғы жаңалықтар: </p>
+            <div class="block inside">
+                
+                <div class="news">
+  
+                    <div class="title">Присуждение на гранты</div>
+                    <div class="author"><span style="font-weight: 500;">Автор: </span> Бахытжан Армановна</div>
+                    <div class="date"><span style="font-weight: 500;">Дата: </span>21:29 10.02.2022</div>
+                    <div class="content">Уважаемые студенты!
+
+
+
+                        Информируем Вас о проведении конкурса НИРС AITU.
+                        
+                        
+                        
+                        На Конкурс принимаются научно-исследовательские работы студентов по направлению образовательных программ AITU.
+                        
+                        Работы победителей внутривузовского этапа Конкурса НИРС направляются на ІІ этап республиканского конкурса НИРС в базовые ВУЗы.
+                        
+                        Призеры Республиканского конкурса НИРС награждаются дипломами Министерства образования и науки I, II, III степени, им предоставляется возможность перезачета кредитов последующего триместра после рассмотрения комиссией.
+                        
+                        
+                        
+                        Найдите себе научного руководителя среди преподавателей, Дедлайн подачи 1 марта.
+                        
+                        Подробнее https://astanait.edu.kz/2022/01/25/konkurs-nauchno-issledovatelskih-rabot/
+                        
+                        Для более подробной информаций просим обращаться в департамент науки и инноваций:
+                        
+                        zhansaya.makhambetova@astanait.edu.kz</div>
+                    <div class="files"></div>
+                </div>
+                
+            </div>
+            <div class="block inside">
+                <div class="news">
+                    <div class="title">ОПРОС на тему: "Анализ удовлетворенности студентов"</div>
+                    <div class="author"><span style="font-weight: 500;">Автор: </span> Темирлан Мырзагалиев</div>
+                    <div class="date"><span style="font-weight: 500;">Дата: </span>21:29 10.02.2022</div>
+                    <div class="content">
+                        <span><strong> Необходимо в обязательном порядке пройти опрос — «Анализ удовлетворенности студентов»</strong><br>
+
+                            ▫️ Приглашаем вас принять участие в опросе об удовлетворенности.  <br>
+                            
+                            Цель этой анкеты - анализ состояния преподавания предметов за предыдущий триместр 2021-2022 г.г. <br>
+                            
+                            На заполнение анкеты требуется примерно 7-10 минут.<br>
+                            
+                            Дедлайн: 23.12.2021 до 18:00 <br>
+                            
+                             Ссылки на опрос:<br>
+                            
+                             <strong>1 курс </strong> 
+                            
+                            https://forms.gle/mapR6QYZEVyJNk2X6 <br>
+                            
+                            <strong>2 курс </strong> 
+
+                            
+                            https://forms.gle/8TCTJQPu3wGM6KGeA <br>
+                            
+                            <strong>2 курс </strong> 
+
+                            
+                            https://forms.gle/pdUWdmaUQWmbhP9a9 <br>
+                            
+                            Благодарим вас за сотрудничество! 
+                            
+                            С Уважением,
+                            
+                            Отдел обеспечения качества и деканат AITU.</span>
+                    </div>
+                    <div class="files"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

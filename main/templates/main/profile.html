@@ -1,0 +1,60 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Менің профилім
+{% endblock %}
+
+{% block content %}
+
+    <div class="container fd-column center">
+        <h1 style="margin-bottom:20px;margin-top: 20px;">Профиль</h1>
+        <h3 style="margin-bottom:20px;">Басты ақпарат</h3>
+        <form action="{% url 'save main info' %}" method="POST" >
+            {% csrf_token %}
+            <p>
+                <label for="id_email">Электронды пошта:</label>
+                <input type="email" name="email" maxlength="60" autofocus="" required="" id="id_email" value="{{request.user}}">
+              </p>
+              <p>
+                <label for="id_name">Аты-жөн:</label>
+                <input type="text" name="name" maxlength="60" required="" id="id_name" value="{{request.user.name}}">
+              </p>
+              <p>
+                <label for="id_surname">Фамилия:</label>
+                <input type="text" name="surname" maxlength="60" required="" id="id_surname" value="{{request.user.surname}}">
+              </p>
+            <button class="btn mt-2 " type="submit" style="width:100%;">Сақтау</button>
+        </form>
+        <h3 style="margin-bottom:20px;margin-top:20px;">Қосымша ақпарат</h3>
+        {% if request.user.role == "teacher" %}
+        <form action="{% url 'save secondary info teacher'%} " method="POST" >
+            {% csrf_token %}
+            <p>
+                <label for="dareje">Дәреже:</label>
+                <input type="text" name="dareje" maxlength="60" autofocus="" required="" id="dareje" value="{{profile_user.dareje}}" >
+              </p>
+              <p>
+                <label for="phone">Ұялы телефон:</label>
+                <input type="number" name="phone_number" maxlength="60" required="" id="phone" value="{{profile_user.phone_number}}">
+              </p>
+
+            <button class="btn mt-2 " type="submit" style="width:100%;">Сақтау</button>
+        </form>
+        {%endif %}
+        {% if request.user.role == "student" %}
+        <form action="{% url 'save secondary info student'%}" method="POST" >
+            {% csrf_token %}
+            <p>
+                <label for="course_level">Курс:</label>
+                <input type="number" name="course_level" maxlength="60" autofocus="" required="" id="course_level" value="{{profile_user.course_level}}" >
+              </p>
+              <p>
+                <label for="id_group">Топ:</label>
+                <input type="text" name="group_name" maxlength="60" required="" id="id_group" value="{{profile_user.group_name}}">
+              </p>
+            <button class="btn mt-2 " type="submit" style="width:100%;">Сақтау</button>
+        </form>
+        {% endif %}
+    </div>
+
+{% endblock%}

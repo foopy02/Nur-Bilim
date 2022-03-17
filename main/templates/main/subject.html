@@ -1,0 +1,230 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+{{course.name}} | {{course.creater_name}} {{course.creater_surname}}
+{% endblock %}
+
+{% block content %}
+<div class="container ">
+    <div class="greeting block">
+        <p class="welcome">{{course.name}} | {{course.creater_name}} {{course.creater_surname}}</p>
+        <div class="block course_info">
+            <ul class="overall_info" >
+                <!-- <li><svg xmlns="http://www.w3.org/2000/svg"  class="assignment" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7zm12-4h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z"/></svg>
+                     <a href="">Катысу</a></li>
+                <li><svg xmlns="http://www.w3.org/2000/svg"  class="assignment" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7zm12-4h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z"/></svg>
+                        <a href="">1 рубежка</a></li>
+                <li><svg xmlns="http://www.w3.org/2000/svg"  class="assignment" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7zm12-4h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z"/></svg>
+                    <a href="">2 рубежка</a></li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="syllabus" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M4,6H2v14c0,1.1,0.9,2,2,2h14v-2H4V6z M20,2H8C6.9,2,6,2.9,6,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4 C22,2.9,21.1,2,20,2z M20,16H8V4h12V16z M13.51,10.16c0.41-0.73,1.18-1.16,1.63-1.8c0.48-0.68,0.21-1.94-1.14-1.94 c-0.88,0-1.32,0.67-1.5,1.23l-1.37-0.57C11.51,5.96,12.52,5,13.99,5c1.23,0,2.08,0.56,2.51,1.26c0.37,0.6,0.58,1.73,0.01,2.57 c-0.63,0.93-1.23,1.21-1.56,1.81c-0.13,0.24-0.18,0.4-0.18,1.18h-1.52C13.26,11.41,13.19,10.74,13.51,10.16z M12.95,13.95 c0-0.59,0.47-1.04,1.05-1.04c0.59,0,1.04,0.45,1.04,1.04c0,0.58-0.44,1.05-1.04,1.05C13.42,15,12.95,14.53,12.95,13.95z"/></g></svg>
+                    <a href="">Силлабус</a>
+                </li> -->
+                {% if user.is_authenticated  %}
+                {% if user.role == "teacher"%}
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="assignment"  height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 13.75c-2.34 0-7 1.17-7 3.5V19h14v-1.75c0-2.33-4.66-3.5-7-3.5zM4.34 17c.84-.58 2.87-1.25 4.66-1.25s3.82.67 4.66 1.25H4.34zM9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm7.04 6.81c1.16.84 1.96 1.96 1.96 3.44V19h4v-1.75c0-2.02-3.5-3.17-5.96-3.44zM15 12c1.93 0 3.5-1.57 3.5-3.5S16.93 5 15 5c-.54 0-1.04.13-1.5.35.63.89 1 1.98 1 3.15s-.37 2.26-1 3.15c.46.22.96.35 1.5.35z"/></svg>
+                    <a href="{% url 'students of course' id=course.id   %}">Студенттер</a>
+                </li>
+                {% endif %}
+                {% endif %}
+                    
+                </li>
+                {% if user.is_authenticated  %}
+                {% if user.role == "teacher"%}
+                <button id="myBtn" class="btn" onclick="show_modal(this)">Курсқа оқушылар қосу</button>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                    <span class="close" onclick="close_modal(this)">&times;</span> 
+                    <h2>{{course.name}} | {{course.creater_name}} {{course.creater_surname}}</h2>                
+                    <form action="{% url 'add students' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="single_row">
+                            <input type="hidden" value="{{course.id}}" name="id">
+                            <label for="emails">Студенттер пошталары: (үтір арқылы бөлу) </label>
+                            <input type="email" name="emails" multiple required>
+                        </div>
+                        <button type="submit">Қосу</button>
+                    </form>
+                    </div>
+                
+                </div>
+                {% endif %}
+                {% endif %}
+
+            </ul>
+        </div>
+        <div class="block assignments_weekly">
+            <ul class="weeks">
+
+                {% for week in materials %}
+                <li>
+                    {% if user.is_authenticated  %}
+                    {% if user.role == "teacher"%}
+                                    <!-- The Modal -->
+                <button id="myBtn" onclick="show_modal(this)">Үй жұмысын салу</button>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                    <span class="close" onclick="close_modal(this)">&times;</span>                 
+                    <form action="{% url 'create homework' %}" method="post" enctype="multipart/form-data"> {% csrf_token %} <p>
+                        <input type="hidden" name="course" value="{{course.id}}" id="id_course">
+                      </p>
+                      <p>
+                        <label for="id_name">Үй жұмыс аты:</label>
+                        <input type="text" name="name" maxlength="255" required="" id="id_name">
+                      </p>
+                      <p>
+                        <input type="hidden" value="{{ forloop.counter }}" name="week_number" id="id_week_number">
+                      </p>
+                      <p>
+                        <label for="id_upload_file">Файл:</label>
+                        <input type="file" name="upload_file" id="id_upload_file">
+                      </p>
+                      <button type="submit">Загрузить дз</button>
+                    </form>
+                    </div>
+                
+                </div>
+                <button id="myBtn" onclick="show_modal(this)">Лекция қосу</button>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                    <span class="close" onclick="close_modal(this)">&times;</span>                 
+                    <form action="{% url 'create lecture' %}" method="post" enctype="multipart/form-data"> {% csrf_token %} <p>
+                        <input type="hidden" name="course" value="{{course.id}}" id="id_course">
+                      </p>
+                      <p>
+                        <label for="id_name">Лекцияның аты:</label>
+                        <input type="text" name="name"  maxlength="255" required="" id="id_name">
+                      </p>
+                      <p>
+                        <input type="hidden" value="{{ forloop.counter }}" name="week_number" id="id_week_number">
+                      </p>
+                      <p>
+                        <label for="id_upload_file">Файл:</label>
+                        <input type="file" name="upload_file" id="id_upload_file">
+                      </p>
+                      <button type="submit">Загрузить дз</button>
+                    </form>
+                    </div>
+                
+                </div>
+                <button id="myBtn" onclick="show_modal(this)">Практика қосу</button>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                    <span class="close" onclick="close_modal(this)">&times;</span>                 
+                    <form action="{% url 'create practice' %}" method="post" enctype="multipart/form-data"> {% csrf_token %} <p>
+                        <input type="hidden" name="course" value="{{course.id}}" id="id_course">
+                      </p>
+                      <p>
+                        <label for="id_name">Практика аты:</label>
+                        <input type="text" name="name"  maxlength="255" required="" id="id_name">
+                      </p>
+                      <p>
+                        <input type="hidden" value="{{ forloop.counter }}" name="week_number" id="id_week_number">
+                      </p>
+                      <p>
+                        <label for="id_upload_file">Файл:</label>
+                        <input type="file" name="upload_file" id="id_upload_file">
+                      </p>
+                      <button type="submit">Загрузить дз</button>
+                    </form>
+                    </div>
+                
+                </div>
+                {% endif %}
+                {% endif %}
+               
+
+                    <p class="last_news">{{ forloop.counter }} апта</p>
+                    <ul class="week">
+                        {% if week.homeworks|length != 0 %}
+                        <li><svg xmlns="http://www.w3.org/2000/svg"  class="assignment" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7zm12-4h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z"/></svg>
+                            {% for homework in week.homeworks %}
+                            <a href="/media/{{homework.upload_file}}" download="">{{homework.name}} | Үй жұмысы</a></li>
+                            {% endfor %}
+                        {% else %}
+                        <li style="color: #f35a5a;"><svg xmlns="http://www.w3.org/2000/svg"  class="assignment" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7zm12-4h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z"/></svg>
+
+                        Үй жұмысы әлі жоқ  </li>
+
+                        {% endif %}
+                        {% if week.lectures|length != 0 %}
+                        <li><svg xmlns="http://www.w3.org/2000/svg" class="assignment" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+                            {% for lecture in week.lectures %}
+                            <a href="/media/{{lecture.upload_file}}" download>{{lecture.name}} | Лекция</a></li>
+                            {% endfor %}
+                        {% else %}
+                        <li style="color: #f35a5a;;"><svg xmlns="http://www.w3.org/2000/svg" class="assignment" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+
+                        Лекциялар әлі жоқ </li>
+                        {% endif %}
+
+                        {% if week.practices|length != 0 %}
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="assignment"  enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M14,2H6C4.9,2,4.01,2.9,4.01,4L4,20c0,1.1,0.89,2,1.99,2H18c1.1,0,2-0.9,2-2V8L14,2z M18,20H6V4h7v5h5V20z M8.82,13.05 L7.4,14.46L10.94,18l5.66-5.66l-1.41-1.41l-4.24,4.24L8.82,13.05z"/></g></svg>
+                            {% for practice in week.practices %}
+                            <a href="/media/{{lecture.upload_file}}" download>{{practice.name}} | Практика</a></li>
+                            {% endfor %}
+                        {% else %}
+                        <li style="color: #f35a5a;;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="assignment"  enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M14,2H6C4.9,2,4.01,2.9,4.01,4L4,20c0,1.1,0.89,2,1.99,2H18c1.1,0,2-0.9,2-2V8L14,2z M18,20H6V4h7v5h5V20z M8.82,13.05 L7.4,14.46L10.94,18l5.66-5.66l-1.41-1.41l-4.24,4.24L8.82,13.05z"/></g></svg>
+                        Практикалар әлі жоқ </li>
+                        {% endif %}
+                        {% if user.is_authenticated  %}
+                        {% if user.role == "student"%}
+                        {% if week.homeworks|length != 0 %}
+
+                                        <!-- The Modal -->
+                    <button id="myBtn" onclick="show_modal(this)">Үй жұмысын салу</button>
+                    <div id="myModal" class="modal">
+        
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                        <span class="close" onclick="close_modal(this)">&times;</span>                 
+                        <form action="{% url 'create grade' %}" method="post" enctype="multipart/form-data"> {% csrf_token %} <p>
+                            <input type="hidden" name="course" value="{{course.id}}" id="id_course">
+                            <input type="hidden" name="homework_id" value="{{week.homeworks.0.id}}">
+                          </p>
+                          <p>
+                            <label for="id_name">Үй жұмыс аты:</label>
+                            <input type="text" name="name" maxlength="255" required="" id="id_name">
+                          </p>
+                          <p>
+                            <input type="hidden" value="{{ forloop.counter }}" name="week_number" id="id_week_number">
+                          </p>
+                          <p>
+                            <label for="id_upload_file">Файл:</label>
+                            <input type="file" name="upload_file" id="id_upload_file">
+                          </p>
+                          <button type="submit" class="btn">Салу</button>
+                        </form>
+                        </div>
+                    
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+        
+                        <li></li>
+                    </ul>
+                </li>
+                {% endfor%}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock%}
+

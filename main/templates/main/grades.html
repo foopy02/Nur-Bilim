@@ -1,0 +1,45 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Студенттер
+{% endblock %}
+
+{% block content %}
+
+    <div class="container ">
+        <div class="greeting block">
+
+                   <h3 style="margin-bottom:10px">Бағалар: </h3>
+                    <ul class="ul_of_grades">
+                        <table style="width:100%">
+                            <tr>
+                                <th>Пән</th>
+                              <th>Апта үй жұмысы</th>
+                              <th>Файл</th>
+                              <th>Салынған уақыт</th>
+                              <th>Баға, 100</th>
+                              <th>Мұғалім</th>
+                            </tr>
+                            
+                            {% for homework in homeworks %}
+                            <tr>
+                                <td>{{homework.homework.course.name}}</td>
+                                <td>{{homework.homework.week_number}}</td>
+                                <td><a href="/media/{{homework.upload_file}}" download="">{{homework.upload_file}}</a></td>
+                                <td>{{homework.datentime}}</td>
+                                <td>{{homework.grade}}</td>
+                                <td>{{homework.homework.course.creater_name}} {{homework.homework.course.creater_surname|make_list|first}}.</td>
+
+                            </tr>
+                            {% endfor%}
+
+
+                          </table>
+
+                 </ul>
+    
+        </div>
+
+    </div>
+
+{% endblock%}

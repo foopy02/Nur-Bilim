@@ -1,0 +1,59 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Студенттер
+{% endblock %}
+
+{% block content %}
+
+    <div class="container ">
+        <div class="greeting block">
+            <ul>
+                {% for student in students %}
+                <li>
+                   <h3 style="margin-bottom:10px">{{ student.user.name }} {{ student.user.surname }}  {% if student.user.patronymic != none %} {{ student.user.patronymic }} {% endif %}</h3>
+                    <ul class="ul_of_grades">
+                        <table style="width:100%">
+                            <tr>
+                              <th>Апта үй жұмысы</th>
+                              <th>Файл</th>
+                              <th>Салынған уақыт</th>
+                              <th>Баға, 100</th>
+                              <th>Сақтау</th>
+                            </tr>
+
+                            {% for homework in homeworks %}
+                            {% if homework.student.user == student.user%}
+
+                            <tr>
+
+
+                                <td>{{homework.homework.week_number}}</td>
+                                <td><a href="/media/{{homework.upload_file}}" download="">{{homework.upload_file}}</a></td>
+                                <td>{{homework.datentime}}</td>
+                                <form action="{% url 'change grade' id=homework.id %}" method="post">
+                                    <input type="hidden" name="course_id" value="{{courseid}}">
+                                    {% csrf_token %}
+                                    <td>
+                                        <input type="hidden" id="id">
+                                        <input type="number" name="grade" max="100" value="{{homework.grade}}" required>
+                                    </td>
+                                    <td><button type="submit">Қою</button></td>
+                                </form>
+                            </tr>
+                            {% endif %}
+                            {% endfor%}
+
+
+                          </table>
+
+                 </ul>
+    
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+{% endblock%}
