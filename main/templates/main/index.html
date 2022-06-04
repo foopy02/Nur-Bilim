@@ -4,6 +4,27 @@
 Нұр-Білім | Бастапқы бет
 {% endblock %}
 {% block content %}
+<div id="carouselExampleFade" class="carousel slide carousel-fade mt-3" data-bs-ride="carousel">
+    <div class="carousel-inner container">
+      <div class="carousel-item active">
+        <img src="{% static 'main/images/banner1.jpg''%}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'main/images/banner2.jpg''%}" class="d-block w-100" alt="...">
+      </div>
+      <!-- <div class="carousel-item">
+        <img src="{% static 'main/images/33.jpg''%}" class="d-block w-100" alt="...">
+      </div> -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
     <div class="container fd-column">
         <div class="greeting block">
             {% if request.user.is_authenticated %}
@@ -40,79 +61,58 @@
         {% endif %}
         {% endif %}
         <div class="greeting block">
+            
 
             <p class="last_news">Соңғы жаңалықтар: </p>
             <div class="block inside">
                 
                 <div class="news">
   
-                    <div class="title">Присуждение на гранты</div>
+                    <div class="title">Гранттарға тағайындау</div>
                     <div class="author"><span style="font-weight: 500;">Автор: </span> Бахытжан Армановна</div>
                     <div class="date"><span style="font-weight: 500;">Дата: </span>21:29 10.02.2022</div>
-                    <div class="content">Уважаемые студенты!
-
-
-
-                        Информируем Вас о проведении конкурса НИРС AITU.
-                        
-                        
-                        
-                        На Конкурс принимаются научно-исследовательские работы студентов по направлению образовательных программ AITU.
-                        
-                        Работы победителей внутривузовского этапа Конкурса НИРС направляются на ІІ этап республиканского конкурса НИРС в базовые ВУЗы.
-                        
-                        Призеры Республиканского конкурса НИРС награждаются дипломами Министерства образования и науки I, II, III степени, им предоставляется возможность перезачета кредитов последующего триместра после рассмотрения комиссией.
-                        
-                        
-                        
-                        Найдите себе научного руководителя среди преподавателей, Дедлайн подачи 1 марта.
-                        
-                        Подробнее https://astanait.edu.kz/2022/01/25/konkurs-nauchno-issledovatelskih-rabot/
-                        
-                        Для более подробной информаций просим обращаться в департамент науки и инноваций:
-                        
-                        zhansaya.makhambetova@astanait.edu.kz</div>
+                    <div class="content">Құрметті студенттер! Сізге AITU СҒЗЖ конкурсын өткізу туралы хабарлаймыз. Байқауға AITU білім беру бағдарламаларының бағыты бойынша студенттердің ғылыми-зерттеу жұмыстары қабылданады. СҒЗЖ конкурсының ЖОО ішіндегі кезеңі жеңімпаздарының жұмыстары республикалық СҒЗЖ конкурсының ІІ кезеңіне базалық жоғары оқу орындарына жіберіледі. СҒЗЖ республикалық конкурсының жүлдегерлері Білім және ғылым министрлігінің I, II, III дәрежелі дипломдарымен марапатталады, оларға комиссия қарағаннан кейін келесі триместрдің кредиттерін қайта есептеу мүмкіндігі беріледі. 1 наурыздың соңғы күнінде оқытушылар арасында ғылыми жетекші табыңыз. Толығырақ https://astanait.edu.kz/2022/01/25/konkurs-nauchno-issledovatelskih-rabot толық ақпарат алу үшін ғылым және инновациялар департаментіне хабарласуыңызды сұраймыз: zhansaya.makhambetova@astanait.edu.kz</div>
                     <div class="files"></div>
                 </div>
                 
             </div>
             <div class="block inside">
                 <div class="news">
-                    <div class="title">ОПРОС на тему: "Анализ удовлетворенности студентов"</div>
+                    <div class="title">"Студенттердің қанағаттануын талдау" тақырыбына сауалнама</div>
                     <div class="author"><span style="font-weight: 500;">Автор: </span> Темирлан Мырзагалиев</div>
                     <div class="date"><span style="font-weight: 500;">Дата: </span>21:29 10.02.2022</div>
                     <div class="content">
-                        <span><strong> Необходимо в обязательном порядке пройти опрос — «Анализ удовлетворенности студентов»</strong><br>
+                        <span><strong> Сауалнамадан өту міндетті – «Оқушылардың қанағаттану талдауы»</strong><br>
 
-                            ▫️ Приглашаем вас принять участие в опросе об удовлетворенности.  <br>
+                            ▫️ Сіздерді қанағаттану сауалнамасына қатысуға шақырамыз. <br>
                             
-                            Цель этой анкеты - анализ состояния преподавания предметов за предыдущий триместр 2021-2022 г.г. <br>
+                            Бұл сауалнаманың мақсаты өткен 2021-2022 триместрдегі пәндерді оқытудың жай-күйін талдау болып табылады. <br>
                             
-                            На заполнение анкеты требуется примерно 7-10 минут.<br>
+                            Сауалнаманы толтыру шамамен 7-10 минутты алады.<br>
                             
-                            Дедлайн: 23.12.2021 до 18:00 <br>
+                            Орындау мерзімі: 23.12.2021 сағат 18:00 дейін <br>
                             
-                             Ссылки на опрос:<br>
+                             Сауалнамаға сілтемелер:<br>
                             
-                             <strong>1 курс </strong> 
+                             <strong>1 курс</strong>
                             
                             https://forms.gle/mapR6QYZEVyJNk2X6 <br>
                             
-                            <strong>2 курс </strong> 
+                            <strong>2 курс</strong>
 
                             
                             https://forms.gle/8TCTJQPu3wGM6KGeA <br>
                             
-                            <strong>2 курс </strong> 
+                            <strong>2 курс</strong>
 
                             
                             https://forms.gle/pdUWdmaUQWmbhP9a9 <br>
                             
-                            Благодарим вас за сотрудничество! 
+                            Ынтымақтастығыңыз үшін рахмет!
                             
-                            С Уважением,
+                            Құрметпен,
                             
-                            Отдел обеспечения качества и деканат AITU.</span>
+                            АИТУ сапаны қамтамасыз ету және деканат.</span>
                     </div>
                     <div class="files"></div>
                 </div>

@@ -1,8 +1,6 @@
 import re
 from tkinter.messagebox import NO
 from django.shortcuts import redirect, render
-from matplotlib.style import context
-from numpy import mat
 from .forms import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import authenticate, login, logout
